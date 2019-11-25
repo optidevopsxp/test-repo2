@@ -9,7 +9,7 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-parameters:
+variables::
   controllerVersion: '1.1.0'
   netVersion: '2.1.x'
   solutionToAnalyse: $(Build.SourcesDirectory)
@@ -25,8 +25,8 @@ steps:
       echo "##vso[task.complete result=Failed;]"
     fi
   env:
-    netVersion: ${{ parameters.netVersion }}
-    solutionToAnalyse: ${{ parameters.solutionToAnalyse }}
+    netVersion: $(netVersion)
+    solutionToAnalyse: $(solutionToAnalyse)
   displayName: 'Check for required parameters'
 - task: DownloadPackage@1
   displayName: 'Download Fortify SCA Tool'
@@ -34,19 +34,19 @@ steps:
     packageType: 'upack'
     feed: 'ReleasePackages'
     definition: 'xp.fortify-controller.linux-x64'
-    version: ${{ parameters.controllerVersion }}
+    version: $(controllerVersion)
     downloadPath: '$(Agent.ToolsDirectory)/fortify/'
 - task: UseDotNet@2
   displayName: 'Install .net core SDK'
   inputs:
     packageType: 'sdk'
-    version: ${{ parameters.netVersion }}
+    version: $(netVersion)
 - script: '$(Agent.ToolsDirectory)/dotnet/dotnet $(Agent.ToolsDirectory)/fortify/XP.FortifyControllerV2.dll ${{ parameters.solutionToAnalyse }}'
   displayName: 'Run Fortify'
 
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
-  
+
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
