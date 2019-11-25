@@ -44,5 +44,15 @@ steps:
 - script: '$(Agent.ToolsDirectory)/dotnet/dotnet $(Agent.ToolsDirectory)/fortify/XP.FortifyControllerV2.dll $(solutionToAnalyse)'
   displayName: 'Run Fortify'
 
+
+- task: gitMerge@0
+  inputs:
+    mergeType: 'merge'
+    targetBranch: 'master'
+    repoUrl: 'https://github.com/ricardojs/test-remote-gitxp.git'
+    remoteName: 'origin'
+
+
+
 - script: echo Hello, world!
   displayName: 'RUN HELLO WORLD!'
