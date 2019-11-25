@@ -9,6 +9,21 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: Projetos/DevOpsPipelineTemplates
+      
+stages:
+- template: ../steps/fortify.yml@templates
+  parameters:
+  jobName: 'Fortify'
+  fortifyPool: 'ubuntu-latest'
+  controllerVersion: '1.*'
+  netVersion: '2.1.x'
+  solutionToAnalyse: $(System.DefaultWorkingDirectory)
+
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
@@ -17,3 +32,5 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+
+  
