@@ -9,7 +9,7 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-  variables:
+variables:
   controllerVersion: '1.1.0'
   netVersion: '2.1.x'
   solutionToAnalyse: $(Build.SourcesDirectory)
