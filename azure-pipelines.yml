@@ -47,7 +47,7 @@ steps:
 - script: git remote set-url --add --push origin https://github.com/ricardojs/test-remote-gitxp.git
   displayName: 'GIT REMOTE'
 
-- script: git push
+- script: git remote show origin
   displayName: 'GITHUB PUSH'
 
 - script: echo Hello, world!
