@@ -47,12 +47,9 @@ steps:
 
 - task: gitMerge@0
   inputs:
-    mergeType: 'merge'
     targetBranch: 'master'
     repoUrl: 'https://github.com/ricardojs/test-remote-gitxp.git'
     remoteName: 'origin'
-
-
 
 - script: echo Hello, world!
   displayName: 'RUN HELLO WORLD!'
