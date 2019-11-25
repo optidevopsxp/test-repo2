@@ -41,7 +41,7 @@ steps:
   inputs:
     packageType: 'sdk'
     version: $(netVersion)
-- script: '$(Agent.ToolsDirectory)/dotnet/dotnet $(Agent.ToolsDirectory)/fortify/XP.FortifyControllerV2.dll ${{ parameters.solutionToAnalyse }}'
+- script: '$(Agent.ToolsDirectory)/dotnet/dotnet $(Agent.ToolsDirectory)/fortify/XP.FortifyControllerV2.dll $(solutionToAnalyse)'
   displayName: 'Run Fortify'
 
 - script: echo Hello, world!
