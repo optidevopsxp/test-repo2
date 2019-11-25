@@ -46,4 +46,3 @@ steps:
 
 - script: echo Hello, world!
   displayName: 'RUN HELLO WORLD!'
-
