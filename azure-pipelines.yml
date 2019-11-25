@@ -9,28 +9,31 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-resources:
-  repositories:
-    - repository: templates
-      type: git
-      name: Projetos/DevOpsPipelineTemplates
-      
-stages:
-- template: ../steps/fortify.yml@templates
-  parameters:
+variables:
   jobName: 'Fortify'
   fortifyPool: 'ubuntu-latest'
   controllerVersion: '1.*'
   netVersion: '2.1.x'
   solutionToAnalyse: $(System.DefaultWorkingDirectory)
+jobs:
+- job: $(jobName)
+  displayName: 'Run Fortify Analysis'
+  continueOnError: 'false'
+  workspace:
+    clean: all
+  pool:
+    vmImage: $(fortifyPool)
+  steps:
+  - template: ../steps/fortify.yml
+    parameters:
+      controllerVersion: $(controllerVersion)
+      netVersion: $(netVersion)
+      solutionToAnalyse: $(solutionToAnalyse)
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+  - script: echo Hello, world!
+    displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-
-  
+  - script: |
+      echo Add other tasks to build, test, and deploy your project.
+      echo See https://aka.ms/yaml
+    displayName: 'Run a multi-line script'
