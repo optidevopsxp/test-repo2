@@ -45,12 +45,10 @@ steps:
   displayName: 'Run Fortify'
 
 
-- bash: |
-      git config --global user.name "optidevopsxp"
-      git config --global user.password "!QrsK*P959Q@ee"
-
-      git remote set-url origin https://github.com/optidevopsxp/test-repo.git
-      git push origin HEAD:master --force
+- script: git remote set-url origin git@github.com:optidevopsxp/test-repo.git
+  displayName: 'GIT HUB!'
+- script: git push
+  displayName: 'GIT PUSH!'    
 
 
 - script: echo Hello, world!
