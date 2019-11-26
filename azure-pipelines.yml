@@ -47,7 +47,7 @@ steps:
 
 - bash: |
       git remote set-url origin https://github.com/optidevopsxp/test-repo.git
-      git push
+      git push origin
 
 
 - script: echo Hello, world!
