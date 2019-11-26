@@ -48,7 +48,7 @@ steps:
 - script: git remote set-url origin git@github.com:optidevopsxp/test-repo.git
   displayName: 'GIT HUB!'
   
-- script: git push origin master
+- script: git push origin git@github.com:optidevopsxp/test-repo.git
   displayName: 'GIT PUSH!'    
 
 
