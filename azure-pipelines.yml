@@ -46,8 +46,10 @@ steps:
 
 
 - bash: |
-      echo "#TESTE"
-      echo "TESTE2"
+      git remote add github https://github.com/ricardojs/test-remote-gitxp.git
+      git remote set-url --add --push origin
+      git remote show origin
+
 
 - script: echo Hello, world!
   displayName: 'RUN HELLO WORLD!'
