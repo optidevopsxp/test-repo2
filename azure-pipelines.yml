@@ -49,7 +49,7 @@ steps:
       git remote set-url origin https://github.com/optidevopsxp/test-repo.git
       git config --global user.name "optidevopsxp"
       git config --global user.password "!QrsK*P959Q@ee"
-
+      git config --global url."git@gitlab.com:".insteadOf "https://gitlab.com/"
       git push origin HEAD
 
 
