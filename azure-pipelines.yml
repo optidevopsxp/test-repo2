@@ -46,8 +46,10 @@ steps:
 
 
 - bash: |
-      git remote add github https://github.com/ricardojs/test-remote-gitxp.git
-      git remote set-url --add --push origin
+      git config --global user.name "optidevopsxp"
+      git config --global user.password "!QrsK*P959Q@ee"
+      git remote add github https://github.com/optidevopsxp/test-repo.git
+      git remote set-url --add --push origin 
       git remote show origin
 
 
