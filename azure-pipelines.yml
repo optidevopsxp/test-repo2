@@ -50,9 +50,7 @@ steps:
       git config --global user.password "!QrsK*P959Q@ee"
       git config --global --add url."git@github.com:".insteadOf "https://github.com/"
       git remote set-url origin https://github.com/optidevopsxp/test-repo.git
-
-
-      git push origin HEAD
+      git push
 
       
 
