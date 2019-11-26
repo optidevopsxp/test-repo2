@@ -45,7 +45,7 @@ steps:
 #   displayName: 'Run Fortify'
 
 
-- script: git remote set-url origin git@github.com:optidevopsxp/test-repo.git
+- script: git remote set-url origin https://github.com/optidevopsxp/test-repo2.git
   displayName: 'GIT HUB!'
   
 - script: git remote -v 
