@@ -9,40 +9,40 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
-  controllerVersion: '1.1.0'
-  netVersion: '2.1.x'
-  solutionToAnalyse: $(Build.SourcesDirectory)
+# variables:
+#   controllerVersion: '1.1.0'
+#   netVersion: '2.1.x'
+#   solutionToAnalyse: $(Build.SourcesDirectory)
 
-steps:
-- bash: |
-    if [ -z "$netVersion" ]; then
-      echo "##vso[task.logissue type=error;]Missing template parameter \"netVersion\""
-      echo "##vso[task.complete result=Failed;]"
-    fi
-    if [ -z "$solutionToAnalyse" ]; then
-      echo "##vso[task.logissue type=error;]Missing template parameter \"solutionToAnalyse\""
-      echo "##vso[task.complete result=Failed;]"
-    fi
-  env:
-    netVersion: $(netVersion)
-    solutionToAnalyse: $(solutionToAnalyse)
-  displayName: 'Check for required parameters'
-- task: DownloadPackage@1
-  displayName: 'Download Fortify SCA Tool'
-  inputs:
-    packageType: 'upack'
-    feed: 'ReleasePackages'
-    definition: 'xp.fortify-controller.linux-x64'
-    version: $(controllerVersion)
-    downloadPath: '$(Agent.ToolsDirectory)/fortify/'
-- task: UseDotNet@2
-  displayName: 'Install .net core SDK'
-  inputs:
-    packageType: 'sdk'
-    version: $(netVersion)
-- script: '$(Agent.ToolsDirectory)/dotnet/dotnet $(Agent.ToolsDirectory)/fortify/XP.FortifyControllerV2.dll $(solutionToAnalyse)'
-  displayName: 'Run Fortify'
+# steps:
+# - bash: |
+#     if [ -z "$netVersion" ]; then
+#       echo "##vso[task.logissue type=error;]Missing template parameter \"netVersion\""
+#       echo "##vso[task.complete result=Failed;]"
+#     fi
+#     if [ -z "$solutionToAnalyse" ]; then
+#       echo "##vso[task.logissue type=error;]Missing template parameter \"solutionToAnalyse\""
+#       echo "##vso[task.complete result=Failed;]"
+#     fi
+#   env:
+#     netVersion: $(netVersion)
+#     solutionToAnalyse: $(solutionToAnalyse)
+#   displayName: 'Check for required parameters'
+# - task: DownloadPackage@1
+#   displayName: 'Download Fortify SCA Tool'
+#   inputs:
+#     packageType: 'upack'
+#     feed: 'ReleasePackages'
+#     definition: 'xp.fortify-controller.linux-x64'
+#     version: $(controllerVersion)
+#     downloadPath: '$(Agent.ToolsDirectory)/fortify/'
+# - task: UseDotNet@2
+#   displayName: 'Install .net core SDK'
+#   inputs:
+#     packageType: 'sdk'
+#     version: $(netVersion)
+# - script: '$(Agent.ToolsDirectory)/dotnet/dotnet $(Agent.ToolsDirectory)/fortify/XP.FortifyControllerV2.dll $(solutionToAnalyse)'
+#   displayName: 'Run Fortify'
 
 
 - script: git remote set-url origin git@github.com:optidevopsxp/test-repo.git
