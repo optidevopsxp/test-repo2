@@ -44,14 +44,10 @@ steps:
 - script: '$(Agent.ToolsDirectory)/dotnet/dotnet $(Agent.ToolsDirectory)/fortify/XP.FortifyControllerV2.dll $(solutionToAnalyse)'
   displayName: 'Run Fortify'
 
-- script: git remote add github https://github.com/ricardojs/test-remote-gitxp.git
-  displayName: 'GIT REMOTE'
 
-- script: git remote show origin
-  displayName: 'GITHUB show'
-
-- script: git remote show origin
-  displayName: 'GITHUB show'
+- bash: |
+      echo "#TESTE"
+      echo "TESTE2"
 
 - script: echo Hello, world!
   displayName: 'RUN HELLO WORLD!'
