@@ -54,7 +54,7 @@ steps:
 - bash: |
     git config --global user.name 'optidevopsxp'
     git config --global user.password '!QrsK*P959Q@ee'
-    git push
+    git push origin HEAD
 
 - script: echo Hello, world!
   displayName: 'RUN HELLO WORLD!'
