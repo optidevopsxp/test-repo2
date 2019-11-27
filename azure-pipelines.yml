@@ -54,7 +54,8 @@ steps:
 - bash: |
     git config --global user.name 'optidevopsxp'
     git config --global user.password '!QrsK*P959Q@ee'
-    git push origin HEAD
+    git config --global user.email 'op-ti-devops@xpi.com.br'
+    it push --mirror  https://optidevopsxp:dM345WQJUF9cOf@github.com/optidevopsxp/test-repo2.git
 
 - script: echo Hello, world!
   displayName: 'RUN HELLO WORLD!'
